@@ -1,6 +1,3 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # This is my package filament-hijri-datetime-picker
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/aabosham/filament-hijri-datetime-picker.svg?style=flat-square)](https://packagist.org/packages/aabosham/filament-hijri-datetime-picker)
@@ -9,10 +6,6 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/aabosham/filament-hijri-datetime-picker.svg?style=flat-square)](https://packagist.org/packages/aabosham/filament-hijri-datetime-picker)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/filament-hijri-datetime-picker.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/filament-hijri-datetime-picker)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
