@@ -2,7 +2,7 @@
     "name": "aabosham/filament-hijri-datetime-picker",
     "description": "This is my package filament-hijri-datetime-picker",
     "keywords": [
-        "AAbosham",
+        "aabosham",
         "laravel",
         "filament-hijri-datetime-picker"
     ],
@@ -18,21 +18,25 @@
     "require": {
         "php": "^8.1 || ^8.0",
         "spatie/laravel-package-tools": "^1.9.2",
-        "illuminate/contracts": "^9.0"
+        "illuminate/contracts": "^9.0",
+        "filament/filament": "^2.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
         "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^7.0",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
         "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
         "psr-4": {
-            "AAbosham\\FilamentHijriDatetimePicker\\": "src",
-            "AAbosham\\FilamentHijriDatetimePicker\\Database\\Factories\\": "database/factories"
+            "AAbosham\\FilamentHijriDatetimePicker\\": "src"
         }
     },
     "autoload-dev": {

@@ -2,24 +2,19 @@
 
 namespace AAbosham\FilamentHijriDatetimePicker;
 
+use Filament\PluginServiceProvider;
 use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use AAbosham\FilamentHijriDatetimePicker\Commands\FilamentHijriDatetimePickerCommand;
 
-class FilamentHijriDatetimePickerServiceProvider extends PackageServiceProvider
+class FilamentHijriDatetimePickerServiceProvider extends PluginServiceProvider
 {
+    protected array $beforeCoreScripts = [
+        'hijri-date-time-picker' => __DIR__ . '/../resources/dist/js/hijri-date-time-picker.js',
+    ];
+
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('filament-hijri-datetime-picker')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_filament-hijri-datetime-picker_table')
-            ->hasCommand(FilamentHijriDatetimePickerCommand::class);
+            ->hasViews();
     }
 }
