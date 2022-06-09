@@ -45,13 +45,6 @@ Optionally, you can publish the views using
 php artisan vendor:publish --tag="filament-hijri-datetime-picker-views"
 ```
 
-## Usage
-
-```php
-$filamentHijriDatetimePicker = new AAbosham\FilamentHijriDatetimePicker();
-echo $filamentHijriDatetimePicker->echoPhrase('Hello, AAbosham!');
-```
-
 ## Testing
 
 ```bash
@@ -61,10 +54,6 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
