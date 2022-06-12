@@ -92,4 +92,15 @@ class HijriDatePicker extends \Filament\Forms\Components\DatePicker
 
         return $state;
     }
+
+    public function getGregorianDate() : Carbon | null | string
+    {
+        $state = data_get($this->getLivewire(), $this->getStatePath());
+
+        if (blank($state)) {
+            return null;
+        }
+
+        return $state;
+    }
 }
