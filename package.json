@@ -1,6 +1,8 @@
 {
+    "main": "resources/js/index.js",
     "dependencies": {
         "dayjs": "^1.11.3",
+        "jquery": "^3.6.0",
         "laravel-mix": "^6.0.37"
     },
     "scripts": {

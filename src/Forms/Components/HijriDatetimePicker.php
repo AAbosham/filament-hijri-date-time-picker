@@ -20,30 +20,7 @@ class HijriDatetimePicker extends \Filament\Forms\Components\DateTimePicker
                 return;
             }
 
-            date_default_timezone_set('UTC');
-
-            $Arabic = new \ArPHP\I18N\Arabic();
-
-            $hijriDate = explode('-', $state);
-
-            if (count($hijriDate) != 3) {
-                return;
-            }
-
-            $correction = $Arabic->mktimeCorrection($hijriDate[1], $hijriDate[0]);
-            $time = $Arabic->mktime(0, 0, 0, $hijriDate[1], $hijriDate[2], $hijriDate[0], $correction);
-
-            $state = \Carbon\Carbon::parse($time);
-
-            if (!$state instanceof CarbonInterface) {
-                try {
-                    $state = Carbon::createFromFormat($component->getFormat(), $state);
-                } catch (InvalidFormatException $exception) {
-                    $state = Carbon::parse($state);
-                }
-            }
-
-            $state->setTimezone($component->getTimezone());
+            $state = $component->getConvertToGregorianDate($state);
 
             $component->state((string) $state);
         });
@@ -58,10 +35,8 @@ class HijriDatetimePicker extends \Filament\Forms\Components\DateTimePicker
             }
 
             $state->shiftTimezone($component->getTimezone());
+
             $state->setTimezone(config('app.timezone'));
-
-            info('dehydrateStateUsing');
-
 
             return $state->format($component->getFormat());
         });
@@ -72,16 +47,34 @@ class HijriDatetimePicker extends \Filament\Forms\Components\DateTimePicker
         );
     }
 
+    private function dateIsHijri(string $date): bool
+    {
+
+        $hijriDate = explode('-', $date);
+
+        $hijri_year = (int) $hijriDate[0];
+
+        if ($hijri_year >= 1300 && $hijri_year <= 1460) {
+            return true;
+        } else if ($hijri_year >= 1900 && $hijri_year <= 2100) {
+            return false;
+        }
+    }
+
     public function getState()
     {
         $state = data_get($this->getLivewire(), $this->getStatePath());
 
         if (is_array($state)) {
-            return $state;
+            return null;
         }
 
         if (blank($state)) {
             return null;
+        }
+
+        if ($this->dateIsHijri($state)) {
+            return $state;
         }
 
         $date  = \Carbon\Carbon::parse($state)->getTimestamp();
@@ -93,13 +86,68 @@ class HijriDatetimePicker extends \Filament\Forms\Components\DateTimePicker
         return $state;
     }
 
-    public function getGregorianDate() : Carbon | null | string
+    public function getGregorianDate(): Carbon | null | string
     {
         $state = data_get($this->getLivewire(), $this->getStatePath());
 
         if (blank($state)) {
             return null;
         }
+
+        if ($this->dateIsHijri($state)) {
+            $state = $this->getConvertToGregorianDate($state);
+        }
+
+        return $state;
+    }
+
+
+    public function getConvertToGregorianDate(string $state): Carbon | null | string
+    {
+        date_default_timezone_set('UTC');
+
+        $Arabic = new \ArPHP\I18N\Arabic();
+
+        $hijriDateTime = explode(' ', $state);
+
+        if (count($hijriDateTime) == 2) {
+            $hijriDate = explode('-', $hijriDateTime[0]);
+            $hijriTime = explode(':', $hijriDateTime[1]);
+            $y = $hijriDate[0];
+            $m = $hijriDate[1];
+            $d = $hijriDate[2];
+
+            $h = $hijriTime[0];
+            $i = $hijriTime[1];
+            $s = $hijriTime[2];
+        } else if (count($hijriDateTime) == 1) {
+            $hijriDate = explode('-', $hijriDateTime[0]);
+            $y = $hijriDate[0];
+            $m = $hijriDate[1];
+            $d = $hijriDate[2];
+
+            $h = 0;
+            $i = 0;
+            $s = 0;
+        } else {
+            return null;
+        }
+
+        $correction = $Arabic->mktimeCorrection($m, $y);
+
+        $time = $Arabic->mktime($h, $i, $s, $m, $d, $y, $correction);
+
+        $state = \Carbon\Carbon::parse($time);
+
+        if (!$state instanceof CarbonInterface) {
+            try {
+                $state = Carbon::createFromFormat($this->getFormat(), $state);
+            } catch (InvalidFormatException $exception) {
+                $state = Carbon::parse($state);
+            }
+        }
+
+        $state->setTimezone($this->getTimezone());
 
         return $state;
     }

@@ -5,7 +5,6 @@
 /* eslint-disable */
 import jQuery from 'jquery';
 import $ from 'jquery';
-import moment from 'moment-hijri';
 import plugin from './../../jquery.calendars.package/js/jquery.plugin.js';
 import calendars from './../../jquery.calendars.package/js/jquery.calendars.js';
 import calendarsPlus from './../../jquery.calendars.package/js/jquery.calendars.plus.js';

@@ -3,9 +3,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat'
 import localeData from 'dayjs/plugin/localeData'
 import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
-import calendar from 'dayjs/plugin/calendar'
 import hijri from './../plugin/dayjs-hijri-plugin/src/index.js'
-import event from "../../../../../../vendor/livewire/livewire/js/action/event";
 import $ from 'jquery';
 
 dayjs.extend(hijri)
