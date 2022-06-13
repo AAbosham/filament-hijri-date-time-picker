@@ -3,7 +3,8 @@
         @php
             $locale = strtolower(str_replace('_', '-', app()->getLocale()));
         @endphp
-        <script defer src="//unpkg.com/dayjs@1.10.4/locale/{{ $locale }}.js"></script>
+
+        <script defer src="//unpkg.com/dayjs@1.10.4/locale/{{ $locale }}.js" onload="dayjs.updateLocale('{{ $locale }}')"></script>
     @endpush
 @endonce
 
@@ -24,7 +25,6 @@
             firstDayOfWeek: {{ $getFirstDayOfWeek() }},
             isAutofocused: {{ $isAutofocused() ? 'true' : 'false' }},
             state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }},
-            locale: '{{strtolower(str_replace('_', '-', app()->getLocale()))}}'
         })"
         x-on:click.away="closePicker()"
         x-on:keydown.escape.stop="closePicker()"
@@ -34,21 +34,22 @@
     >
         <input x-ref="maxDate" type="hidden" value="{{ $getMaxDate() }}" />
         <input x-ref="minDate" type="hidden" value="{{ $getMinDate() }}" />
+
         <button
             @unless($isDisabled())
                 x-ref="button"
-            x-on:click="togglePickerVisibility()"
-            x-on:keydown.enter.stop.prevent="open ? selectDate() : openPicker()"
-            x-on:keydown.arrow-left.stop.prevent="focusPreviousDay()"
-            x-on:keydown.arrow-right.stop.prevent="focusNextDay()"
-            x-on:keydown.arrow-up.stop.prevent="focusPreviousWeek()"
-            x-on:keydown.arrow-down.stop.prevent="focusNextWeek()"
-            x-on:keydown.backspace.stop.prevent="clearState()"
-            x-on:keydown.clear.stop.prevent="clearState()"
-            x-on:keydown.delete.stop.prevent="clearState()"
-            x-bind:aria-expanded="open"
-            aria-label="{{ $getPlaceholder() }}"
-            dusk="filament.forms.{{ $getStatePath() }}.open"
+                x-on:click="togglePickerVisibility()"
+                x-on:keydown.enter.stop.prevent="open ? selectDate() : openPicker()"
+                x-on:keydown.arrow-left.stop.prevent="focusPreviousDay()"
+                x-on:keydown.arrow-right.stop.prevent="focusNextDay()"
+                x-on:keydown.arrow-up.stop.prevent="focusPreviousWeek()"
+                x-on:keydown.arrow-down.stop.prevent="focusNextWeek()"
+                x-on:keydown.backspace.stop.prevent="clearState()"
+                x-on:keydown.clear.stop.prevent="clearState()"
+                x-on:keydown.delete.stop.prevent="clearState()"
+                x-bind:aria-expanded="open"
+                aria-label="{{ $getPlaceholder() }}"
+                dusk="filament.forms.{{ $getStatePath() }}.open"
             @endunless
             type="button"
             {{ $getExtraTriggerAttributeBag()->class([
@@ -128,7 +129,7 @@
                                 <div
                                     x-text="day"
                                     @class([
-                                        'text-xs font-medium text-center overflow-hidden text-gray-800',
+                                        'text-xs font-medium text-center text-gray-800',
                                         'dark:text-gray-200' => config('forms.dark_mode'),
                                     ])
                                 ></div>
@@ -153,7 +154,7 @@
                                         'bg-primary-50 @if (config('forms.dark_mode')) dark:bg-primary-100 dark:text-gray-600 @endif': dayIsToday(day) && ! dayIsSelected(day) && focusedDate.date() !== day && ! dayIsDisabled(day),
                                         'bg-primary-200 @if (config('forms.dark_mode')) dark:text-gray-600 @endif': focusedDate.date() === day && ! dayIsSelected(day),
                                         'bg-primary-500 text-white': dayIsSelected(day),
-                                        'cursor-not-allowed': dayIsDisabled(day),
+                                        'cursor-not-allowed pointer-events-none': dayIsDisabled(day),
                                         'opacity-50': focusedDate.date() !== day && dayIsDisabled(day),
                                     }"
                                     x-bind:dusk="'filament.forms.{{ $getStatePath() }}' + '.focusedDate.' + day"
