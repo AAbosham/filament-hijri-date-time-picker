@@ -1,6 +1,6 @@
 <?php
 
-namespace AAbosham\FilamentHijriDatetimePicker\Forms\Components;
+namespace AAbosham\FilamentHijriDateTimePicker\Forms\Components;
 
 class HijriDatePicker extends HijriDateTimePicker
 {

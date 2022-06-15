@@ -1,15 +1,15 @@
 <?php
 
-namespace AAbosham\FilamentHijriDatetimePicker\Forms\Components;
+namespace AAbosham\FilamentHijriDateTimePicker\Forms\Components;
 
 use Filament\Forms\Components\DateTimePicker;
 use Carbon\CarbonInterface;
 use Carbon\Exceptions\InvalidFormatException;
 use Illuminate\Support\Carbon;
 
-class HijriDatetimePicker extends \Filament\Forms\Components\DateTimePicker
+class HijriDateTimePicker extends \Filament\Forms\Components\DateTimePicker
 {
-    protected string $view = 'filament-hijri-datetime-picker::components.hijri-datetime-picker';
+    protected string $view = 'filament-hijri-date-time-picker::components.hijri-date-time-picker';
 
     protected function setUp(): void
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace AAbosham\FilamentHijriDatetimePicker\Database\Factories;
+namespace AAbosham\FilamentHijriDateTimePicker\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

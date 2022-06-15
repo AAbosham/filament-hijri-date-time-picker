@@ -20,7 +20,7 @@
     :state-path="$getStatePath()"
 >
     <div
-        x-data="HijriDatetimePickerFormComponent({
+        x-data="HijriDateTimePickerFormComponent({
             displayFormat: '{{ convert_date_format($getDisplayFormat())->to('day.js') }}',
             firstDayOfWeek: {{ $getFirstDayOfWeek() }},
             isAutofocused: {{ $isAutofocused() ? 'true' : 'false' }},

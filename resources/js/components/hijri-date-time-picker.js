@@ -14,7 +14,7 @@ dayjs.extend(utc)
 dayjs.calendar('hijri')
 window.dayjs = dayjs
 export default (Alpine) => {
-    Alpine.data('HijriDatetimePickerFormComponent', ({
+    Alpine.data('HijriDateTimePickerFormComponent', ({
         displayFormat,
         firstDayOfWeek,
         isAutofocused,

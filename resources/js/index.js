@@ -1,5 +1,5 @@
-import HijriDatetimePickerFormComponent from './components/hijri-date-time-picker';
+import HijriDateTimePickerFormComponent from './components/hijri-date-time-picker';
 
 document.addEventListener('alpine:init', () => {
-    window.Alpine.plugin(HijriDatetimePickerFormComponent);
+    window.Alpine.plugin(HijriDateTimePickerFormComponent);
 });

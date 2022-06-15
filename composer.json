@@ -1,12 +1,12 @@
 {
-    "name": "aabosham/filament-hijri-datetime-picker",
-    "description": "This is my package filament-hijri-datetime-picker",
+    "name": "aabosham/filament-hijri-date-time-picker",
+    "description": "This is my package filament-hijri-date-time-picker",
     "keywords": [
         "aabosham",
         "laravel",
-        "filament-hijri-datetime-picker"
+        "filament-hijri-date-time-picker"
     ],
-    "homepage": "https://github.com/aabosham/filament-hijri-datetime-picker",
+    "homepage": "https://github.com/aabosham/filament-hijri-date-time-picker",
     "license": "MIT",
     "authors": [
         {
@@ -37,12 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "AAbosham\\FilamentHijriDatetimePicker\\": "src"
+            "AAbosham\\FilamentHijriDateTimePicker\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AAbosham\\FilamentHijriDatetimePicker\\Tests\\": "tests"
+            "AAbosham\\FilamentHijriDateTimePicker\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -57,10 +57,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AAbosham\\FilamentHijriDatetimePicker\\FilamentHijriDatetimePickerServiceProvider"
+                "AAbosham\\FilamentHijriDateTimePicker\\FilamentHijriDateTimePickerServiceProvider"
             ],
             "aliases": {
-                "FilamentHijriDatetimePicker": "AAbosham\\FilamentHijriDatetimePicker\\Facades\\FilamentHijriDatetimePicker"
+                "FilamentHijriDateTimePicker": "AAbosham\\FilamentHijriDateTimePicker\\Facades\\FilamentHijriDateTimePicker"
             }
         }
     },
