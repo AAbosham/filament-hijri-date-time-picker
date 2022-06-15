@@ -25,6 +25,7 @@
             firstDayOfWeek: {{ $getFirstDayOfWeek() }},
             isAutofocused: {{ $isAutofocused() ? 'true' : 'false' }},
             state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }},
+            locale: '{{strtolower(str_replace('_', '-', app()->getLocale()))}}'
         })"
         x-on:click.away="closePicker()"
         x-on:keydown.escape.stop="closePicker()"
