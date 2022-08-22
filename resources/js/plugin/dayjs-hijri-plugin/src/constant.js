@@ -11,9 +11,11 @@ export const W = 'week';
 export const FORMAT_DEFAULT = 'YYYY-MM-DDTHH:mm:ssZ';
 
 export const ar = {
-    jmonths: 'محرم_صفر_ربيع الأول_ربيع الآخر_جمادى الآولى_جمادى الآخرة_رجب_شعبان_رمضان_شوال_ذو القعدة_ذو الحجة'.split('_'),
+    months: 'محرم_صفر_ربيع الأول_ربيع الآخر_جمادى الآولى_جمادى الآخرة_رجب_شعبان_رمضان_شوال_ذو القعدة_ذو الحجة'.split('_'),
+    monthsShort: 'محرم_صفر_ربيع الأول_ربيع الآخر_جمادى الآولى_جمادى الآخرة_رجب_شعبان_رمضان_شوال_ذو القعدة_ذو الحجة'.split('_'),
 };
 
 export const en = {
-    jmonths: 'Muharram_Safar_Rabi Al-Awwal_Rabi Al-Thani_Jumada Al-Awwal_Jumada Al-Thani_Rajab_Shaban_Ramadan_Shawwal_Dhu Al-Qadah_Dhu Al-Hijjah'.split('_'),
+    months: 'Muharram_Safar_Rabi Al-Awwal_Rabi Al-Thani_Jumada Al-Awwal_Jumada Al-Thani_Rajab_Shaban_Ramadan_Shawwal_Dhu Al-Qadah_Dhu Al-Hijjah'.split('_'),
+    monthsShort: 'Muharram_Safar_Rabi Al-Awwal_Rabi Al-Thani_Jumada Al-Awwal_Jumada Al-Thani_Rajab_Shaban_Ramadan_Shawwal_Dhu Al-Qadah_Dhu Al-Hijjah'.split('_'),
 };

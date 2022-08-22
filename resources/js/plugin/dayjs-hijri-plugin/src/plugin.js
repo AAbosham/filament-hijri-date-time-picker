@@ -1,4 +1,5 @@
 import ar from 'dayjs/esm/locale/ar';
+import en from 'dayjs/esm/locale/en';
 import $ from 'jquery';
 
 import hdate from './calendar';
@@ -64,7 +65,7 @@ export default (o, Dayjs, dayjs) => {
         return $isHijri(this);
     };
 
-    dayjs.en.jmonths = C.en.jmonths;
+    dayjs.en.months = C.en.months;
 
     dayjs.locale('ar', { ...ar, ...C.ar }, true);
 
@@ -204,9 +205,13 @@ export default (o, Dayjs, dayjs) => {
         if (!$isHijri(this)) {
             return oldFormat.bind(this)(formatStr, localeObject);
         }
+        dayjs.locale('ar', { ...ar, ...C.ar }, true);
+        dayjs.locale('en', { ...en, ...C.en }, true);
+        dayjs.en.months = C.en.months;
+
         const str = formatStr || C.FORMAT_DEFAULT;
         const locale = localeObject || this.$locale();
-        const { jmonths } = locale;
+        const { months } = locale;
         return str.replace(C.REGEX_FORMAT, (match) => {
             if (match.indexOf('[') > -1) return match.replace(/\[|\]/g, '');
             switch (match) {
@@ -219,9 +224,9 @@ export default (o, Dayjs, dayjs) => {
                 case 'MM':
                     return $padStart(this.$hM + 1, 2, '0');
                 case 'MMM':
-                    return jmonths[this.$hM];
+                    return months[this.$hM];
                 case 'MMMM':
-                    return jmonths[this.$hM];
+                    return months[this.$hM];
                 case 'D':
                     return String(this.$hD);
                 case 'DD':

@@ -1,5 +1,5 @@
 {
-    "main": "resources/js/index.js",
+    "name": "hijri-date-time-picker",
     "dependencies": {
         "dayjs": "^1.11.3",
         "jquery": "^3.6.0",

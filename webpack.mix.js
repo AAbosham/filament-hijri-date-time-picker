@@ -2,9 +2,20 @@ const mix = require("laravel-mix");
 
 mix.disableNotifications();
 
-mix
-  .setPublicPath("./resources/dist")
-  .js("./resources/js/index.js", "dist/js/hijri-date-time-picker.js")
-  .options({
+mix.disableSuccessNotifications()
+
+mix.options({
+    terser: {
+        extractComments: false,
+    },
+})
+
+mix.setPublicPath("resources/dist")
+mix.sourceMaps()
+mix.version()
+
+mix.js("./resources/js/hijri-date-time-picker.js", "resources/dist/js")
+
+mix.options({
     processCssUrls: false,
-  });
+});
