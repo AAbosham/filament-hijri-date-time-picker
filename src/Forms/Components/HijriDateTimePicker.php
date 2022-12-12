@@ -2,12 +2,13 @@
 
 namespace AAbosham\FilamentHijriDateTimePicker\Forms\Components;
 
-use Filament\Forms\Components\DateTimePicker;
 use Carbon\CarbonInterface;
-use Carbon\Exceptions\InvalidFormatException;
+use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Carbon\Exceptions\InvalidFormatException;
+use Filament\Forms\Components\DateTimePicker;
 
-class HijriDateTimePicker extends \Filament\Forms\Components\DateTimePicker
+class HijriDateTimePicker extends DateTimePicker
 {
     protected string $view = 'filament-hijri-date-time-picker::components.hijri-date-time-picker';
 
@@ -77,11 +78,16 @@ class HijriDateTimePicker extends \Filament\Forms\Components\DateTimePicker
             return $state;
         }
 
-        $date  = \Carbon\Carbon::parse($state)->getTimestamp();
+        if (!$this->hasTime()) {
+            $state = Str::of($state)->replace(' 00:00:00', '');
+        }
+
+        $date = Carbon::parse($state)
+            ->getTimestamp();
 
         $Arabic = new \ArPHP\I18N\Arabic();
 
-        $state  = $Arabic->date($this->getFormat(), $date, 1);
+        $state  = $Arabic->date($this->getFormat(), $date, 0);
 
         return $state;
     }
